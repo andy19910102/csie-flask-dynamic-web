@@ -12,8 +12,9 @@
 </head>
 
 <body>
+    <!-- navbar -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">My Website</a>
+        <a class="navbar-brand" href="/">Website</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
             aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -21,28 +22,38 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/">首頁</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/create_product">Create Product</a>
+                    <a class="nav-link" href="/product/create">建立商品</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#signUpModal" href="#">Sign Up</a>
+                    <a class="nav-link" data-toggle="modal" data-target="#signUpModal" href="#">註冊</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#loginModal" href="#">Login</a>
+                    <a class="nav-link" data-toggle="modal" data-target="#loginModal" href="#">登入</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="logoutBtn" href="#">Logout</a>
+                    <a class="nav-link" id="logoutBtn" href="#">登出</a>
                 </li>
             </ul>
         </div>
     </nav>
+    <!-- navbar end -->
+    <!-- TODO: 
+        使用 get_flashed_messages 取得所有伺服器快訊
+        並套用Bootstrap 4 Alert 元件
+        https://getbootstrap.com/docs/4.4/components/alerts/
+    -->
+    <!-- modals -->
     {% include 'shared/login_modal.html' %}
     {% include 'shared/sign_up_modal.html' %}
+    <!-- modals end -->
+    <!-- body block -->
     {% block body %}
 
     {% endblock %}
+    <!-- body block end -->
     <!-- jquery.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- popper.js -->
@@ -54,29 +65,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <!-- main.js -->
-    <script>
-        $('#loginForm').submit(function (event) {
-            event.preventDefault();
-            const form = {
-                email: $('#loginEmail').val(),
-                password: $('#loginPassword').val(),
-            };
-            console.log('[登入]', form);
-        });
-
-        $('#signUpForm').submit(function (event) {
-            event.preventDefault();
-            const form = {
-                email: $('#signUpEmail').val(),
-                password: $('#signUpPassword').val(),
-            };
-            console.log('[註冊]', form);
-        });
-
-        $('#logoutBtn').click(function () {
-            console.log('[登出]');
-        });
-    </script>
+    <script src="/static/js/main.js"></script>
 </body>
 
 </html>
